@@ -1,0 +1,15 @@
+*~
+*.log
+/.conda/
+/dist/
+/build/
+/data/
+/temp_data/
+
+# Ignore egg and egg-info directories and files
+*.egg
+*.egg-info/
+
+# Ignore Python cache files and directories
+__pycache__/
+*.pyc 
