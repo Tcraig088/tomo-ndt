@@ -2,17 +2,17 @@ import os
 import coolname
 import numpy as np
 
-from tomobase.data.base import Data
+
 from tomobase.log import logger
-from tomobase.globals import TOMOBASE_DATATYPES
+
 
 from tomondt.io.vmf import VMF
 import dask.array as da
 from dask.delayed import delayed
 
-TOMOBASE_DATATYPES.append(VolumeNDt=None)
 
-class VolumeNDt(Data):
+
+class VolumeNDt():
     """A class representing a time series of volumes.
 
     Supported File Types:

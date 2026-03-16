@@ -5,7 +5,7 @@ from ..utils.context import device_context
 from ..utils.output import progressbar
 
 from .base import NDtOperator
-from tomondt.plugins.algorithms import forwardproject
+from ..plugins.algorithms import forwardproject
 from tomondt.structs import TiltSeriesNDt
 import logging
 
