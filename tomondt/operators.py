@@ -5,7 +5,7 @@ from typing import Callable
 from magicgui.tqdm import tqdm
 
 from tomobase.data import Volume, Sinogram
-from tomobase.processes import project
+from tomobase.procedures import project
 
 from .data import VolumeNDt
 

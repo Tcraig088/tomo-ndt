@@ -3,7 +3,7 @@ import coolname
 import numpy as np
 
 
-from tomobase.log import logger
+from tomobase.core.log import logger
 
 
 from tomondt.io.vmf import VMF

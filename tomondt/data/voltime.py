@@ -5,7 +5,7 @@ import pathlib
 import os 
 import numpy as np
 import coolname
-from tomobase.log import logger
+from tomobase.core.log import logger
 
 class VolumeTimeSeries(ImageAbstract):
     readers: dict[str, callable] = {}

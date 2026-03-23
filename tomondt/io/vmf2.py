@@ -7,7 +7,7 @@ import dask
 import numpy as np
 from ..data import VolumeTimeSeries
 from ..structs.vmf.v1 import VolumeNDt_1v
-from tomobase.log import logger
+from tomobase.core.log import logger
 
 def _read_vmf_record_unbound(directory, t):
     vmf = VolumeNDt_1v(directory)
