@@ -4,16 +4,16 @@ import dask.array as da
 import pathlib
 import os
 
-from ...depreciated.data import VolumeTimeSeries
+from ...core.data_classes import VolumeNDt
 
 def _read_zarr(directory: pathlib.Path | str, *args, **kwargs):
     data = xr.open_dataarray(directory, engine="zarr", chunks='auto')
     name = data.attrs['name']
     metadata = data.attrs.get('metadata', {})
-    return VolumeTimeSeries(path=directory, name=name, data=data, metadata=metadata)
+    return VolumeNDt(path=directory, name=name, data=data, metadata=metadata)
 
 
-def _write_zarr(vts: VolumeTimeSeries, directory: pathlib.Path | str):
+def _write_zarr(vts: VolumeNDt, directory: pathlib.Path | str):
     if isinstance(directory, str):
         directory = pathlib.Path(directory)
 
@@ -23,7 +23,7 @@ def _write_zarr(vts: VolumeTimeSeries, directory: pathlib.Path | str):
     vts._data.attrs['metadata'] = metadata
     vts._data.to_zarr(directory, mode='w')
 
-def _write_zarr_record(vts: VolumeTimeSeries | str, data: xr.DataArray, *args, **kwargs):
+def _write_zarr_record(vts: VolumeNDt | str, data: xr.DataArray, *args, **kwargs):
     if isinstance(vts.path, str):
         vts.path = pathlib.Path(vts.path)
 
@@ -31,6 +31,6 @@ def _write_zarr_record(vts: VolumeTimeSeries | str, data: xr.DataArray, *args, *
     data.to_zarr(vts.path, append_dim=dim)
     return xr.open_dataarray(vts.path, engine="zarr", chunks='auto')
 
-VolumeTimeSeries.readers['.zarr'] = _read_zarr
-VolumeTimeSeries.writers['.zarr'] = _write_zarr
-VolumeTimeSeries.record_writers['.zarr'] = _write_zarr_record
+VolumeNDt.readers['.zarr'] = _read_zarr
+VolumeNDt.writers['.zarr'] = _write_zarr
+VolumeNDt.record_writers['.zarr'] = _write_zarr_record

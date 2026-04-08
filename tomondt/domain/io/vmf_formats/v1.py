@@ -3,8 +3,7 @@ import numpy as np
 import pandas as pd
 import struct 
 import blosc
-from tomondt.depreciated.utils.context import DeviceContextEnum, DtypesEnum
-from tomondt import utils
+
 from . import VolumeNDt
 # Supported Compression algorithms for the vmf file format
 compression_codes = [
@@ -152,7 +151,7 @@ class VolumeNDt_1v(VolumeNDt):
                 file.seek(int(position))
                 obj = file.read(int(dsize))
                 obj = self._debinarize_obj(obj)
-                obj = utils.convertcontext(obj, self.context, self.device)
+                #obj = utils.convertcontext(obj, self.context, self.device)
                 return obj
 
     """ _new_file

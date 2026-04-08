@@ -1,11 +1,11 @@
 import sys
 
-from .domain import procedures
+from .domain import io
 
 
 print("Loading plugins...")
 
 parent_pkg = sys.modules[__package__]
-parent_pkg.procedures = procedures
-sys.modules[f"{__package__}.procedures"] = procedures
+parent_pkg.procedures = io
+sys.modules[f"{__package__}.io"] = io   
 
